@@ -2,6 +2,13 @@ cmake_minimum_required(VERSION 2.4.6)
 
 project(python_orocos_kdl)
 
+# Skip package if building for Android
+if(ANDROID)
+  find_package(catkin REQUIRED)
+  catkin_package()
+  return()
+endif()
+
 find_package(orocos_kdl)
 include_directories(${orocos_kdl_INCLUDE_DIRS})
 link_directories(${orocos_kdl_LIBRARY_DIRS})
